@@ -49,6 +49,30 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // ─── Specialization tabs filtering ───
+  const specTabs = document.querySelectorAll('.spec-tab');
+  const specCards = document.querySelectorAll('.klaster-card');
+
+  specTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const targetSpec = tab.dataset.spec;
+
+      // Update active tab styling
+      specTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      // Filter cards
+      specCards.forEach(card => {
+        const category = card.dataset.category;
+        if (targetSpec === 'all' || category === targetSpec) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+
   // ─── Scroll reveal animation ───
   const revealElements = document.querySelectorAll('[data-reveal]');
 
