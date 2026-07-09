@@ -915,7 +915,7 @@
   </section>
 
   <!-- PENYETARAAN -->
-  <section class="section section-alt" id="penyetaraan">
+    <section class="section section-alt" id="penyetaraan">
     <div class="container">
       <div class="section-label">Penyetaraan MK</div>
       <h2>Ekuivalensi Kurikulum Lama → 2026</h2>
@@ -946,14 +946,14 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr class="sks-down">
                 <td>1</td>
                 <td><code>TKU211131</code></td>
                 <td>Pemrograman Dasar</td>
                 <td>3</td>
                 <td>→</td>
-                <td>Pemrograman Dasar</td>
-                <td>3</td>
+                <td><code>TBM261107</code> Pemrograman Dasar</td>
+                <td>2</td>
               </tr>
               <tr>
                 <td>2</td>
@@ -961,16 +961,16 @@
                 <td>Matematika Diskrit</td>
                 <td>3</td>
                 <td>→</td>
-                <td>Matematika Diskrit</td>
+                <td><code>TBM262101</code> Matematika Diskrit</td>
                 <td>3</td>
               </tr>
-              <tr class="merge">
+              <tr class="sks-up">
                 <td>3</td>
-                <td><code>TKU211104</code><br><code>TKU211202</code></td>
-                <td>Teori Vektor & Matriks (2)<br>+ Aljabar Linear (3)</td>
-                <td>5</td>
+                <td><code>TKU211104</code></td>
+                <td>Teori Vektor dan Matriks</td>
+                <td>2</td>
                 <td>→</td>
-                <td>Aljabar Linear</td>
+                <td><code>TKF261103</code> Aljabar Linear</td>
                 <td>3</td>
               </tr>
               <tr>
@@ -979,16 +979,16 @@
                 <td>Kalkulus Variabel Tunggal</td>
                 <td>3</td>
                 <td>→</td>
-                <td>Kalkulus</td>
+                <td><code>TKF261102</code> Kalkulus</td>
                 <td>3</td>
               </tr>
-              <tr class="merge">
+              <tr class="sks-up">
                 <td>5</td>
-                <td><code>TKU211121</code><br><code>TKU211221</code></td>
-                <td>Fisika Mekanika Klasik (2)<br>+ Fisika Listrik & Magnet (3)</td>
-                <td>5</td>
+                <td><code>TKU211121</code></td>
+                <td>Fisika Mekanika Klasik</td>
+                <td>2</td>
                 <td>→</td>
-                <td>Fisika Dasar</td>
+                <td><code>TKF261105</code> Fisika Dasar</td>
                 <td>3</td>
               </tr>
               <tr>
@@ -997,7 +997,7 @@
                 <td>Fisika Fluida, Kalor, dan Gelombang</td>
                 <td>2</td>
                 <td>→</td>
-                <td>Fenomena Biotransport</td>
+                <td><code>TBM261204</code> Fenomena Biotransport</td>
                 <td>2</td>
               </tr>
               <tr class="sks-up">
@@ -1006,16 +1006,16 @@
                 <td>Kimia Dasar</td>
                 <td>2</td>
                 <td>→</td>
-                <td>Kimia Dasar</td>
+                <td><code>TKF261104</code> Kimia Dasar</td>
                 <td>3</td>
               </tr>
-              <tr class="merge">
+              <tr class="sks-up">
                 <td>8</td>
-                <td><code>TKU212142</code><br><code>TKU212244</code></td>
-                <td>Teknik Digital (2)<br>+ Sistem Mikroprosesor (3)</td>
-                <td>5</td>
+                <td><code>TKU212142</code></td>
+                <td>Teknik Digital</td>
+                <td>2</td>
                 <td>→</td>
-                <td>Teknik Digital & Mikroprosesor</td>
+                <td><code>TBM262201</code> Teknik Digital dan Mikroposesor</td>
                 <td>3</td>
               </tr>
             </tbody>
@@ -1040,67 +1040,76 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr class="merge">
                 <td>1</td>
+                <td><code>TKU211202</code></td>
+                <td>Aljabar Linear</td>
+                <td>3</td>
+                <td>→</td>
+                <td>Penggabungan (ke <code>TKF261103</code> Aljabar Linear)</td>
+                <td>—</td>
+              </tr>
+              <tr>
+                <td>2</td>
                 <td><code>TKU211131P</code></td>
                 <td>Prakt. Pemrograman Dasar</td>
                 <td>1</td>
                 <td>→</td>
-                <td>Prakt. Pemrograman Dasar</td>
+                <td><code>TBM261209</code> Prakt. Pemrograman Dasar</td>
                 <td>1</td>
               </tr>
               <tr class="sks-up">
-                <td>2</td>
+                <td>3</td>
                 <td><code>TKB211201</code></td>
                 <td>Biologi</td>
                 <td>2</td>
                 <td>→</td>
-                <td>Biologi Sel dan Genetika</td>
+                <td><code>TBM261207</code> Biologi Sel dan Genetika</td>
                 <td>3</td>
               </tr>
               <tr class="sks-up">
-                <td>3</td>
+                <td>4</td>
                 <td><code>FIU211201</code></td>
                 <td>Konsep Keteknikan untuk Peradaban</td>
                 <td>2</td>
                 <td>→</td>
-                <td>Konsep Keteknikan untuk Peradaban</td>
+                <td><code>TKF261208</code> Konsep Keteknikan untuk Peradaban</td>
                 <td>3</td>
               </tr>
               <tr>
-                <td>4</td>
+                <td>5</td>
                 <td><code>TKU211103</code></td>
                 <td>Kalkulus Variabel Jamak</td>
                 <td>3</td>
                 <td>→</td>
-                <td>Kalkulus Variabel Jamak</td>
+                <td><code>TBM261202</code> Kalkulus Variabel Jamak</td>
                 <td>3</td>
               </tr>
               <tr class="sks-down">
-                <td>5</td>
+                <td>6</td>
                 <td><code>TKU211201</code></td>
                 <td>Analisis Variabel Kompleks</td>
                 <td>3</td>
                 <td>→</td>
-                <td>Analisis Variabel Kompleks</td>
+                <td><code>TBM261202</code> Analisis Variabel Kompleks</td>
                 <td>2</td>
               </tr>
-              <tr>
-                <td>6</td>
+              <tr class="sks-down">
+                <td>7</td>
                 <td><code>TKU211221</code></td>
                 <td>Fisika Listrik dan Magnet</td>
                 <td>3</td>
                 <td>→</td>
-                <td>Fisika Listrik, Magnet dan Gelombang</td>
-                <td>3</td>
+                <td><code>TBM261205</code> Fisika Listrik, Magnet dan Gelombang</td>
+                <td>2</td>
               </tr>
               <tr>
-                <td>7</td>
+                <td>8</td>
                 <td><code>TKU211211</code></td>
                 <td>Probabilitas dan Variabel Acak</td>
                 <td>2</td>
                 <td>→</td>
-                <td>Probabilitas dan Variabel Acak</td>
+                <td><code>TBM261101</code> Probabilitas dan Variabel Acak</td>
                 <td>2</td>
               </tr>
             </tbody>
@@ -1125,67 +1134,76 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr class="merge">
                 <td>1</td>
+                <td><code>TKU212244</code></td>
+                <td>Sistem Mikroprosesor</td>
+                <td>3</td>
+                <td>→</td>
+                <td>Penggabungan (ke <code>TBM262201</code> Tek. Digital & Mikroprosesor)</td>
+                <td>—</td>
+              </tr>
+              <tr>
+                <td>2</td>
                 <td><code>TKU212101</code></td>
                 <td>Metode Numeris</td>
                 <td>3</td>
                 <td>→</td>
-                <td>Metode Numeris</td>
+                <td><code>TBM262104</code> Metode Numeris</td>
                 <td>3</td>
               </tr>
               <tr>
-                <td>2</td>
+                <td>3</td>
                 <td><code>TKU212111</code></td>
                 <td>Statistika</td>
                 <td>2</td>
                 <td>→</td>
-                <td>Statistika</td>
+                <td><code>TBM261201</code> Statistika</td>
                 <td>2</td>
               </tr>
               <tr>
-                <td>3</td>
+                <td>4</td>
                 <td><code>TKU212141</code></td>
                 <td>Isyarat dan Sistem</td>
                 <td>3</td>
                 <td>→</td>
-                <td>Isyarat dan Sistem</td>
+                <td><code>TBM262202</code> Isyarat dan Sistem</td>
                 <td>3</td>
               </tr>
               <tr>
-                <td>4</td>
+                <td>5</td>
                 <td><code>TKU212143</code></td>
                 <td>Analisis Untai Elektrik DC</td>
                 <td>3</td>
                 <td>→</td>
-                <td>Analisis Untai Elektrik DC</td>
+                <td><code>TBM262106</code> Analisis Untai Elektrik DC</td>
                 <td>3</td>
               </tr>
               <tr class="gone">
-                <td>5</td>
+                <td>6</td>
                 <td><code>TKU212144</code></td>
                 <td>Telekomunikasi Dasar</td>
                 <td>3</td>
                 <td>→</td>
-                <td class="removed">Dihapus dari K2026</td>
+                <td><span class="removed">Dihapus dari K2026</span></td>
                 <td>—</td>
               </tr>
               <tr>
-                <td>6</td>
+                <td>7</td>
                 <td><code>TKU212121P</code></td>
                 <td>Prakt. Sains Dasar</td>
                 <td>1</td>
                 <td>→</td>
-                <td>Prakt. Sains Dasar</td>
+                <td><code>TBM262108</code> Prakt. Sains Dasar</td>
                 <td>1</td>
               </tr>
               <tr>
-                <td>7</td>
+                <td>8</td>
                 <td><code>TKU211203</code></td>
-                <td>Persamaan Diferensial</td>
+                <td>Persamaan Differensial</td>
                 <td>3</td>
                 <td>→</td>
-                <td>Persamaan Diferensial</td>
+                <td><code>TBM262102</code> Persamaan Differensial</td>
                 <td>3</td>
               </tr>
             </tbody>
@@ -1195,7 +1213,7 @@
 
       <!-- Sem 4 -->
       <div class="equiv-section">
-        <h3>Semester 4 <span class="equiv-total">20 SKS lama</span></h3>
+        <h3>Semester 4 <span class="equiv-total">22 SKS lama</span></h3>
         <div class="table-card">
           <table class="eq-table">
             <thead>
@@ -1210,14 +1228,14 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr class="sks-down">
                 <td>1</td>
                 <td><code>TKU211231</code></td>
                 <td>Algoritma dan Struktur Data</td>
                 <td>3</td>
                 <td>→</td>
-                <td>Algoritma dan Struktur Data</td>
-                <td>3</td>
+                <td><code>TBM262203</code> Algoritma Struktur Data</td>
+                <td>2</td>
               </tr>
               <tr>
                 <td>2</td>
@@ -1225,17 +1243,17 @@
                 <td>Elektronika Dasar</td>
                 <td>3</td>
                 <td>→</td>
-                <td>Elektronika Dasar</td>
+                <td><code>TBM262105</code> Elektronika Dasar</td>
                 <td>3</td>
               </tr>
-              <tr>
+              <tr class="sks-down">
                 <td>3</td>
                 <td><code>TKU212243</code></td>
                 <td>Teknik Kendali</td>
                 <td>3</td>
                 <td>→</td>
-                <td>Teknik Kendali Biomedis</td>
-                <td>3</td>
+                <td><code>TBM263101</code> Teknik Kendali Biomedis</td>
+                <td>2</td>
               </tr>
               <tr class="gone">
                 <td>4</td>
@@ -1243,7 +1261,7 @@
                 <td>Jaringan Komunikasi dan Data</td>
                 <td>3</td>
                 <td>→</td>
-                <td class="removed">Dihapus dari K2026</td>
+                <td><span class="removed">Dihapus dari K2026</span></td>
                 <td>—</td>
               </tr>
               <tr class="sks-down">
@@ -1252,25 +1270,34 @@
                 <td>Teknik Biomagnetika</td>
                 <td>3</td>
                 <td>→</td>
-                <td>Teknik Biomagnetika</td>
-                <td>2</td>
-              </tr>
-              <tr class="merge">
-                <td>6</td>
-                <td><code>TKB212202</code><br><code>TKB213203</code></td>
-                <td>Pengolahan Isyarat Biomedis (3)<br>+ Pengolahan Citra Biomedis (2)</td>
-                <td>5</td>
-                <td>→</td>
-                <td>Pengolahan Isyarat & Citra Biomedis</td>
+                <td><code>TBM263105</code> Teknik Biomagnetika</td>
                 <td>2</td>
               </tr>
               <tr>
-                <td>7</td>
-                <td><code>TKB212203</code></td>
-                <td>Pengukuran & Instrumentasi Biomedis</td>
+                <td>6</td>
+                <td><code>TKB213203</code></td>
+                <td>Teknik Pengolahan Citra Biomedis</td>
                 <td>2</td>
                 <td>→</td>
-                <td>Pengukuran & Instrumentasi Biomedis</td>
+                <td><code>TBM263102</code> Pengolahan Isyarat dan Citra Biomedis</td>
+                <td>2</td>
+              </tr>
+              <tr class="merge">
+                <td>7</td>
+                <td><code>TKB212202</code></td>
+                <td>Teknik Pengolahan Isyarat Biomedis</td>
+                <td>3</td>
+                <td>→</td>
+                <td>Penggabungan (ke <code>TBM263102</code> Pengolahan Isyarat & Citra)</td>
+                <td>—</td>
+              </tr>
+              <tr>
+                <td>8</td>
+                <td><code>TKB212203</code></td>
+                <td>Pengukuran dan Instrumentasi Biomedis</td>
+                <td>2</td>
+                <td>→</td>
+                <td><code>TBM262204</code> Pengukuran dan Instrumentasi Biomedis</td>
                 <td>2</td>
               </tr>
             </tbody>
@@ -1280,7 +1307,7 @@
 
       <!-- Sem 5 -->
       <div class="equiv-section">
-        <h3>Semester 5 <span class="equiv-total">18 SKS lama</span></h3>
+        <h3>Semester 5 <span class="equiv-total">16 SKS lama</span></h3>
         <div class="table-card">
           <table class="eq-table">
             <thead>
@@ -1301,7 +1328,7 @@
                 <td>Teknik Optimisasi</td>
                 <td>3</td>
                 <td>→</td>
-                <td class="removed">Dihapus dari K2026</td>
+                <td><span class="removed">Dihapus dari K2026</span></td>
                 <td>—</td>
               </tr>
               <tr>
@@ -1310,7 +1337,7 @@
                 <td>Kerja Praktik</td>
                 <td>2</td>
                 <td>→</td>
-                <td>KP / Magang Industri</td>
+                <td><code>TBM264102</code> Magang Industri</td>
                 <td>2</td>
               </tr>
               <tr>
@@ -1319,7 +1346,7 @@
                 <td>Elektronika Biomedis</td>
                 <td>2</td>
                 <td>→</td>
-                <td>Elektronika Biomedis</td>
+                <td><code>TBM262205</code> Elektronika Biomedis</td>
                 <td>2</td>
               </tr>
               <tr class="sks-up">
@@ -1328,7 +1355,7 @@
                 <td>Anatomi dan Fisiologi</td>
                 <td>3</td>
                 <td>→</td>
-                <td>Anatomi Manusia (2) + Fisiologi Manusia (2)</td>
+                <td><code>TBM261106</code> Anatomi Manusia (2) +<br><code>TBM261206</code> Fisiologi Manusia (2)</td>
                 <td>4</td>
               </tr>
               <tr>
@@ -1337,16 +1364,16 @@
                 <td>Teknik Biomekanika</td>
                 <td>2</td>
                 <td>→</td>
-                <td>Teknik Biomekanika</td>
+                <td><code>TBM263105</code> Teknik Biomekanika</td>
                 <td>2</td>
               </tr>
               <tr>
                 <td>6</td>
                 <td><code>TKB213104</code></td>
-                <td>Proyek Junior TB</td>
+                <td>Proyek Junior Teknik Biomedis</td>
                 <td>2</td>
                 <td>→</td>
-                <td>Proyek Junior TB</td>
+                <td><code>TBM262209</code> Proyek Junior Teknik Biomedis</td>
                 <td>2</td>
               </tr>
               <tr>
@@ -1355,7 +1382,7 @@
                 <td>Sensor dan Transduser</td>
                 <td>2</td>
                 <td>→</td>
-                <td>Sensor, Aktuator dan Antarmuka</td>
+                <td><code>TBM262206</code> Sensor, Aktuator dan Antarmuka</td>
                 <td>2</td>
               </tr>
             </tbody>
@@ -1386,7 +1413,7 @@
                 <td>Teknik Biomaterial</td>
                 <td>2</td>
                 <td>→</td>
-                <td>Teknik Biomaterial</td>
+                <td><code>TBM262207</code> Teknik Biomaterial</td>
                 <td>2</td>
               </tr>
               <tr>
@@ -1395,61 +1422,70 @@
                 <td>Teknik Pencitraan Biomedis</td>
                 <td>2</td>
                 <td>→</td>
-                <td>Teknik Pencitraan Biomedis</td>
+                <td><code>TBM263104</code> Teknik Pencitraan Biomedis</td>
                 <td>2</td>
               </tr>
               <tr>
                 <td>3</td>
                 <td><code>TKB213204</code></td>
-                <td>Proyek Perancangan TB 1</td>
+                <td>Proyek Perancangan Teknik Biomedis 1</td>
                 <td>2</td>
                 <td>→</td>
-                <td>Proyek Perancangan TB 1</td>
+                <td><code>TBM264105</code> Proyek Perancangan Teknik Biomedis 1</td>
                 <td>2</td>
               </tr>
               <tr>
                 <td>4</td>
                 <td><code>TKB213205</code></td>
-                <td>Proyek Senior TB</td>
+                <td>Proyek Senior Teknik Biomedis</td>
                 <td>3</td>
                 <td>→</td>
-                <td>Proyek Senior TB</td>
+                <td><code>TBM263109</code> Proyek Senior Teknik Biomedis</td>
                 <td>3</td>
               </tr>
               <tr>
                 <td>5</td>
-                <td><code>FIU213201</code></td>
-                <td>Pancasila</td>
+                <td><code>UNU21xxxx</code></td>
+                <td>Pilihan C/MBKM</td>
                 <td>2</td>
                 <td>→</td>
-                <td>Pancasila</td>
+                <td><code>TBM2632XX</code> Spesialisasi</td>
                 <td>2</td>
               </tr>
               <tr>
                 <td>6</td>
-                <td><code>UNU211101</code></td>
-                <td>Bahasa Indonesia</td>
+                <td><code>FIU213201</code></td>
+                <td>Pancasila</td>
                 <td>2</td>
                 <td>→</td>
-                <td>Bahasa Indonesia</td>
+                <td><code>FIU262208</code> Pancasila</td>
                 <td>2</td>
               </tr>
               <tr>
                 <td>7</td>
-                <td><code>UNU214202</code></td>
-                <td>Kewarganegaraan</td>
+                <td><code>UNU211101</code></td>
+                <td>Bahasa Indonesia</td>
                 <td>2</td>
                 <td>→</td>
-                <td>Kewarganegaraan</td>
+                <td><code>UNU262107</code> Bahasa Indonesia dan Komunikasi Profesional</td>
                 <td>2</td>
               </tr>
               <tr>
                 <td>8</td>
+                <td><code>UNU214202</code></td>
+                <td>Kewarganegaraan</td>
+                <td>2</td>
+                <td>→</td>
+                <td><code>UNU263107</code> Kewarganegaraan</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>9</td>
                 <td><code>FIU2121xx</code></td>
                 <td>Agama</td>
                 <td>2</td>
                 <td>→</td>
-                <td>Agama</td>
+                <td><code>FIU264103</code> Agama</td>
                 <td>2</td>
               </tr>
             </tbody>
@@ -1459,7 +1495,7 @@
 
       <!-- Sem 7 -->
       <div class="equiv-section">
-        <h3>Semester 7 <span class="equiv-total">21 SKS lama</span></h3>
+        <h3>Semester 7 <span class="equiv-total">23 SKS lama</span></h3>
         <div class="table-card">
           <table class="eq-table">
             <thead>
@@ -1474,32 +1510,32 @@
               </tr>
             </thead>
             <tbody>
-              <tr class="sks-up">
+              <tr>
                 <td>1</td>
-                <td><code>TKB214101</code></td>
-                <td>Proyek Perancangan TB 2</td>
-                <td>2</td>
-                <td>→</td>
-                <td>Proyek Perancangan TB 2</td>
-                <td>3</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td><code>UNU214101</code></td>
-                <td>Kuliah Kerja Nyata</td>
-                <td>4</td>
-                <td>→</td>
-                <td>Kuliah Kerja Nyata</td>
-                <td>4</td>
-              </tr>
-              <tr>
-                <td>3</td>
                 <td><code>UNU222002</code></td>
                 <td>Komunikasi Masyarakat</td>
                 <td>2</td>
                 <td>→</td>
-                <td>Komunikasi Masyarakat</td>
+                <td><code>UNU2641XX</code> Komunikasi Masyarakat</td>
                 <td>2</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td><code>TKB214101</code></td>
+                <td>Proyek Perancangan Teknik Biomedis 2</td>
+                <td>2</td>
+                <td>→</td>
+                <td><code>TBM264204</code> Proyek Perancangan Teknik Biomedis 2</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td><code>UNU214101</code></td>
+                <td>Kuliah Kerja Nyata</td>
+                <td>4</td>
+                <td>→</td>
+                <td><code>UNU2641XX</code> Kuliah Kerja Nyata</td>
+                <td>4</td>
               </tr>
               <tr>
                 <td>4</td>
@@ -1507,8 +1543,44 @@
                 <td>Penerapan Teknologi Tepat Guna</td>
                 <td>2</td>
                 <td>→</td>
-                <td>Penerapan Teknologi Tepat Guna</td>
+                <td><code>UNU2641XX</code> Penerapan Teknologi Tepat Guna</td>
                 <td>2</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td><code>UNU242033</code></td>
+                <td>Literasi Kesehatan</td>
+                <td>2</td>
+                <td>→</td>
+                <td><code>TKF264202</code> Literasi Kesehatan (K5L)</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td><code>TKB21xxxx</code></td>
+                <td>Pilihan A/B</td>
+                <td>6</td>
+                <td>→</td>
+                <td><code>TBM2632XX</code> Spesialisasi</td>
+                <td>6</td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td><code>UNU21xxxx</code></td>
+                <td>Pilihan C/MBKM</td>
+                <td>2</td>
+                <td>→</td>
+                <td><code>TBM2632XX</code> Spesialisasi</td>
+                <td>2</td>
+              </tr>
+              <tr>
+                <td>8</td>
+                <td><code>TKB2141xx</code></td>
+                <td>Pilihan B</td>
+                <td>3</td>
+                <td>→</td>
+                <td><code>TBM2632XX</code> Spesialisasi</td>
+                <td>3</td>
               </tr>
             </tbody>
           </table>
@@ -1538,16 +1610,25 @@
                 <td>Studium Generale</td>
                 <td>2</td>
                 <td>→</td>
-                <td>Studium Generale</td>
+                <td><code>TBM264203</code> Studium Generale</td>
                 <td>2</td>
               </tr>
-              <tr class="sks-down">
+              <tr>
                 <td>2</td>
+                <td><code>TKB2132xx</code></td>
+                <td>Pilihan A</td>
+                <td>6</td>
+                <td>→</td>
+                <td><code>TBM2632XX</code> Spesialisasi</td>
+                <td>6</td>
+              </tr>
+              <tr class="sks-down">
+                <td>3</td>
                 <td><code>TKU214241</code></td>
                 <td>Skripsi & Pendadaran</td>
                 <td>4</td>
                 <td>→</td>
-                <td>Proyek Individu</td>
+                <td><code>TBM263205</code> Proyek Individu</td>
                 <td>3</td>
               </tr>
             </tbody>
@@ -1557,7 +1638,7 @@
     </div>
   </section>
 
-  <!-- YUDISIUM -->
+<!-- YUDISIUM -->
   <section class="section" id="yudisium">
     <div class="container">
       <div class="section-label">Kelulusan</div>
