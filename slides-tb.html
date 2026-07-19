@@ -1,0 +1,2233 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Presentasi Kurikulum TB 2026</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --ugm-blue: #003D79;
+      --ugm-blue-dark: #00254B;
+      --ugm-blue-tint: #EAF0F6;
+      --ugm-yellow: #FCD116;
+      --ugm-yellow-dark: #CBA500;
+      --ugm-yellow-tint: #FFF9DB;
+      --ugm-white: #FFFFFF;
+      --ugm-gray-light: #F3F4F6;
+      --ugm-gray-mid: #9CA3AF;
+      --ugm-gray-dark: #374151;
+
+      --bs-bg: #EEF4FC;
+      --bs-border: #A8C4E0;
+      --bs-text: var(--ugm-blue);
+      --et-bg: #FFFFFF;
+      --et-border: #D1D5DB;
+      --et-text: var(--ugm-gray-dark);
+      --ge-bg: #ECFDF5;
+      --ge-border: #34D399;
+      --ge-text: #064E3B;
+      --sp-bg: var(--ugm-yellow-tint);
+      --sp-border: #E8C800;
+      --sp-text: #7A5B00;
+
+      --radius: 8px;
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--ugm-blue-dark);
+      color: var(--ugm-gray-dark);
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Navbar */
+    .navbar {
+      height: 60px;
+      background: var(--ugm-blue-dark);
+      border-bottom: 2px solid var(--ugm-yellow);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 30px;
+      color: var(--ugm-white);
+      z-index: 10;
+      flex-shrink: 0;
+    }
+
+    .nav-brand {
+      font-weight: 800;
+      font-size: 18px;
+      color: var(--ugm-white);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-brand span {
+      background: var(--ugm-yellow);
+      color: var(--ugm-blue-dark);
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-size: 13px;
+    }
+
+    .slide-title-header {
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.8);
+      font-weight: 500;
+    }
+
+    .slide-select {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: var(--ugm-yellow);
+      padding: 4px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      outline: none;
+      transition: all 0.2s;
+    }
+
+    .slide-select:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: var(--ugm-yellow);
+    }
+
+    .slide-select option {
+      background: var(--ugm-blue-dark);
+      color: var(--ugm-white);
+    }
+
+    /* Viewport & Slide Container */
+    .viewport {
+      flex: 1;
+      position: relative;
+      background: #F9FAFB;
+      overflow: hidden;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      padding: 30px 60px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateX(50px);
+      transition: opacity var(--transition), transform var(--transition), visibility var(--transition);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 16px;
+      overflow-y: auto;
+    }
+
+    .slide.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(0);
+    }
+
+    .slide.exit-left {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateX(-50px);
+    }
+
+    /* Slide Themes */
+    .slide.dark-theme {
+      background: linear-gradient(135deg, var(--ugm-blue-dark) 0%, var(--ugm-blue) 100%);
+      color: var(--ugm-white);
+    }
+
+    /* Slide Header Components */
+    .slide-tag {
+      font-size: 16px;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: var(--ugm-blue);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .dark-theme .slide-tag {
+      color: var(--ugm-yellow);
+    }
+
+    .slide-tag::before {
+      content: '';
+      display: inline-block;
+      width: 18px;
+      height: 3px;
+      background: currentColor;
+      border-radius: 2px;
+    }
+
+    .slide-heading {
+      font-size: 34px;
+      font-weight: 800;
+      color: var(--ugm-blue-dark);
+      line-height: 1.2;
+    }
+
+    .dark-theme .slide-heading {
+      color: var(--ugm-white);
+    }
+
+    /* Layout Helpers */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      flex: 1;
+      min-height: 0;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      flex: 1;
+      min-height: 0;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      flex: 1;
+      min-height: 0;
+    }
+
+    .flex-column {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex: 1;
+      min-height: 0;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--ugm-white);
+      border: 1px solid var(--ugm-gray-light);
+      border-radius: var(--radius);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 8px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      border-top: 3px solid var(--ugm-blue);
+    }
+
+    .card.accent-yellow {
+      border-top-color: var(--ugm-yellow);
+    }
+
+    .card-label {
+      font-size: 14px;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--ugm-gray-mid);
+      letter-spacing: 0.5px;
+    }
+
+    .card-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--ugm-blue-dark);
+    }
+
+    .card-desc {
+      font-size: 17px;
+      color: var(--ugm-gray-dark);
+      line-height: 1.5;
+    }
+
+    .dark-theme .card {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: var(--ugm-white);
+      border-top-color: var(--ugm-yellow);
+    }
+
+    .dark-theme .card-title {
+      color: var(--ugm-white);
+    }
+
+    .dark-theme .card-desc {
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    /* Hero Slide Components */
+    .hero-center {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      text-align: center;
+      gap: 20px;
+    }
+
+    .hero-subtitle {
+      font-size: 24px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--ugm-yellow);
+      font-weight: 600;
+    }
+
+    .hero-title {
+      font-size: 64px;
+      font-weight: 800;
+      line-height: 1.1;
+      color: var(--ugm-white);
+    }
+
+    .hero-title em {
+      color: var(--ugm-yellow);
+      font-style: normal;
+    }
+
+    .hero-desc {
+      font-size: 22px;
+      color: rgba(255, 255, 255, 0.7);
+      max-width: 700px;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 30px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 16px 40px;
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+      margin-top: 15px;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-val {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 44px;
+      font-weight: 800;
+      color: var(--ugm-yellow);
+      display: block;
+    }
+
+    .stat-lbl {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* Semesters */
+    .sem-column {
+      background: var(--ugm-white);
+      border: 1px solid var(--ugm-gray-light);
+      border-radius: var(--radius);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      height: 100%;
+    }
+
+    .sem-header {
+      background: var(--ugm-blue-dark);
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--ugm-white);
+    }
+
+    .sem-header.industry {
+      background: linear-gradient(90deg, #1E3A8A 0%, #111827 100%);
+    }
+
+    .sem-badge {
+      background: var(--ugm-yellow);
+      color: var(--ugm-blue-dark);
+      font-weight: 800;
+      font-size: 13px;
+      width: 24px;
+      height: 24px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .sem-name {
+      font-size: 20px;
+      font-weight: 700;
+      flex: 1;
+      margin-left: 10px;
+    }
+
+    .sem-sks {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .sem-content {
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      overflow-y: auto;
+      flex: 1;
+    }
+
+    .course-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 12px;
+      font-size: 16px;
+      border-radius: 4px;
+      border: 1px solid var(--ugm-gray-light);
+      background: #FAFAFA;
+    }
+
+    .course-item.bs {
+      background: var(--bs-bg);
+      border-color: var(--bs-border);
+      color: var(--bs-text);
+    }
+
+    .course-item.et {
+      background: var(--et-bg);
+      border-color: var(--et-border);
+      color: var(--et-text);
+    }
+
+    .course-item.ge {
+      background: var(--ge-bg);
+      border-color: var(--ge-border);
+      color: var(--ge-text);
+      font-weight: 500;
+    }
+
+    .course-item.sp {
+      background: var(--sp-bg);
+      border-color: var(--sp-border);
+      color: var(--sp-text);
+    }
+
+    .course-item b {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      margin-left: 8px;
+      opacity: 0.85;
+    }
+
+    /* Legends */
+    .legend-row {
+      display: flex;
+      gap: 16px;
+      padding: 8px 18px;
+      background: var(--ugm-white);
+      border: 1px solid var(--ugm-gray-light);
+      border-radius: var(--radius);
+      width: fit-content;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+    }
+
+    .legend-dot.bs {
+      background: var(--ugm-blue);
+    }
+
+    .legend-dot.et {
+      background: var(--ugm-gray-mid);
+    }
+
+    .legend-dot.ge {
+      background: #10B981;
+    }
+
+    .legend-dot.sp {
+      background: var(--ugm-yellow-dark);
+    }
+
+    /* Tables */
+    .table-container {
+      border: 1px solid var(--ugm-gray-light);
+      border-radius: var(--radius);
+      background: var(--ugm-white);
+      overflow: hidden;
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .table-scroll {
+      overflow-y: auto;
+      flex: 1;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    th {
+      background: var(--ugm-blue-tint);
+      color: var(--ugm-blue-dark);
+      font-size: 16px;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 8px 12px;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+
+    td {
+      padding: 7px 12px;
+      font-size: 15px;
+      border-bottom: 1px solid var(--ugm-gray-light);
+      color: var(--ugm-gray-dark);
+      vertical-align: middle;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:hover td {
+      background: #F9FAFB;
+    }
+
+    /* Change indicators in tables */
+    .badge-diff {
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 3px;
+      display: inline-block;
+    }
+
+    .badge-diff.up {
+      background: #DEF7EC;
+      color: #03543F;
+    }
+
+    .badge-diff.down {
+      background: #FDE8E8;
+      color: #9B1C1C;
+    }
+
+    .badge-diff.same {
+      background: #E5E7EB;
+      color: #374151;
+    }
+
+    .badge-diff.del {
+      background: #F3F4F6;
+      color: #9CA3AF;
+      text-decoration: line-through;
+    }
+
+    .badge-diff.merge {
+      background: var(--ugm-yellow-tint);
+      color: #854D0E;
+    }
+
+    /* Highlights for Rows */
+    tr.up-row td {
+      background: #F0FDF4;
+    }
+
+    tr.down-row td {
+      background: #FFF5F5;
+    }
+
+    tr.del-row td {
+      color: #9CA3AF;
+      background: #F9FAFB;
+    }
+
+    tr.merge-row td {
+      background: var(--ugm-yellow-tint);
+    }
+
+    /* Rule Lists / Yudisium List style */
+    .rule-item {
+      background: var(--ugm-white);
+      border: 1px solid var(--ugm-gray-light);
+      border-left: 4px solid var(--ugm-blue);
+      border-radius: var(--radius);
+      padding: 10px 14px;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .rule-num {
+      background: var(--ugm-blue);
+      color: var(--ugm-yellow);
+      font-weight: 800;
+      font-size: 16px;
+      width: 30px;
+      height: 30px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .rule-text {
+      font-size: 16px;
+      color: var(--ugm-gray-dark);
+      line-height: 1.45;
+    }
+
+    .rule-text strong {
+      display: block;
+      font-size: 19px;
+      color: var(--ugm-blue-dark);
+      margin-bottom: 2px;
+    }
+
+    /* Cohort info card */
+    .cohort-card {
+      background: var(--ugm-blue-tint);
+      border-left: 4px solid var(--ugm-blue);
+      padding: 14px 20px;
+      border-radius: var(--radius);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cohort-card-left h3 {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--ugm-blue-dark);
+    }
+
+    .cohort-card-left p {
+      font-size: 17px;
+      color: var(--ugm-gray-dark);
+    }
+
+    .cohort-card-stats {
+      display: flex;
+      gap: 20px;
+    }
+
+    .cohort-card-stat {
+      text-align: center;
+    }
+
+    .cohort-card-stat strong {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 30px;
+      font-weight: 800;
+      color: var(--ugm-blue-dark);
+      display: block;
+    }
+
+    .cohort-card-stat span {
+      font-size: 13px;
+      text-transform: uppercase;
+      color: var(--ugm-gray-mid);
+    }
+
+    /* Spec list styling */
+    .spec-card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      flex: 1;
+      min-height: 0;
+    }
+
+    .spec-group-card {
+      background: var(--ugm-white);
+      border: 1px solid var(--ugm-gray-light);
+      border-top: 3px solid var(--ugm-blue);
+      border-radius: var(--radius);
+      padding: 12px 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 6px;
+    }
+
+    .spec-group-card h4 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--ugm-blue-dark);
+      border-bottom: 1px solid var(--ugm-gray-light);
+      padding-bottom: 4px;
+      margin-bottom: 6px;
+    }
+
+    .spec-item {
+      display: flex;
+      justify-content: space-between;
+      font-size: 15px;
+      color: var(--ugm-gray-dark);
+      padding: 4px 0;
+      border-bottom: 1px dashed rgba(0, 0, 0, 0.05);
+    }
+
+    .spec-item:last-child {
+      border-bottom: none;
+    }
+
+    .spec-item span {
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--ugm-gray-mid);
+      font-size: 14px;
+    }
+
+    /* English Score Grid */
+    .english-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .english-box {
+      background: var(--ugm-gray-light);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      border-radius: 6px;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .english-box.highlight {
+      background: var(--ugm-yellow-tint);
+      border-color: var(--ugm-yellow);
+    }
+
+    .english-box strong {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--ugm-blue-dark);
+      display: block;
+    }
+
+    .english-box span {
+      font-size: 13px;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--ugm-gray-mid);
+    }
+
+    /* Image Display Layouts */
+    .visuals-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      flex: 1;
+      min-height: 0;
+    }
+
+    .visual-box {
+      border: 1px solid var(--ugm-gray-light);
+      border-radius: var(--radius);
+      background: var(--ugm-white);
+      display: flex;
+      flex-direction: column;
+      padding: 12px;
+      gap: 6px;
+      overflow: hidden;
+    }
+
+    .visual-box span {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--ugm-blue-dark);
+    }
+
+    .visual-link {
+      flex: 1;
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid var(--ugm-gray-light);
+      display: block;
+      cursor: zoom-in;
+    }
+
+    .visual-link img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    /* Bottom Control Bar */
+    .controls-bar {
+      height: 50px;
+      background: var(--ugm-blue-dark);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 30px;
+      color: var(--ugm-white);
+      flex-shrink: 0;
+      z-index: 10;
+    }
+
+    .nav-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: var(--ugm-white);
+      padding: 6px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+
+    .nav-btn:hover:not(:disabled) {
+      background: var(--ugm-yellow);
+      color: var(--ugm-blue-dark);
+      border-color: var(--ugm-yellow);
+    }
+
+    .nav-btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    .progress-track {
+      flex: 1;
+      margin: 0 30px;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--ugm-yellow);
+      width: 0%;
+      transition: width var(--transition);
+    }
+
+    /* Callout info */
+    .alert-banner {
+      background: var(--ugm-yellow-tint);
+      border-left: 4px solid var(--ugm-yellow-dark);
+      padding: 10px 16px;
+      border-radius: 4px;
+      font-size: 16px;
+      color: #7A5B00;
+      flex-shrink: 0;
+    }
+
+    /* Cohort Detail Cards */
+    .detail-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      flex: 1;
+      min-height: 0;
+      overflow-y: auto;
+    }
+
+    .detail-card {
+      border: 1px solid var(--ugm-gray-light);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--ugm-white);
+      display: flex;
+      flex-direction: column;
+      height: fit-content;
+    }
+
+    .detail-head {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 12px;
+      background: var(--ugm-blue);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--ugm-white);
+    }
+
+    .detail-head span:last-child {
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--ugm-yellow);
+    }
+
+    .detail-card ul {
+      list-style: none;
+      padding: 6px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .detail-card li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 4px 0;
+      font-size: 14px;
+      color: var(--ugm-gray-dark);
+      border-bottom: 1px solid var(--ugm-gray-light);
+    }
+
+    .detail-card li:last-child {
+      border-bottom: none;
+    }
+
+    .detail-card li span {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--ugm-gray-mid);
+      padding: 1px 5px;
+      background: var(--ugm-gray-light);
+      border-radius: 3px;
+    }
+
+    .detail-card li.new {
+      color: var(--ugm-blue);
+      font-weight: 600;
+    }
+
+    .detail-card li.new::before {
+      content: '+ ';
+      font-weight: 800;
+      color: var(--ugm-blue-dark);
+    }
+
+    .detail-card li.new span {
+      background: var(--ugm-blue-tint);
+      color: var(--ugm-blue);
+    }
+
+    .detail-heading {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--ugm-blue-dark);
+      margin-top: 4px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Top Navbar -->
+  <nav class="navbar">
+    <div class="nav-brand"><span>TB</span> Teknik Biomedis UGM</div>
+    <div class="slide-title-header" id="current-slide-title">Kurikulum Teknik Biomedis 2026</div>
+    <select class="slide-select" id="slide-selector" aria-label="Pilih Slide"></select>
+  </nav>
+
+  <!-- Main Viewport -->
+  <div class="viewport">
+
+    <!-- SLIDE 1: Hero -->
+    <div class="slide dark-theme active" data-title="Kurikulum Teknik Biomedis 2026">
+      <div class="hero-center">
+        <p class="hero-subtitle">Departemen Teknik Elektro dan Teknologi Informasi UGM</p>
+        <h1 class="hero-title">Kurikulum <em>Teknik Biomedis</em> 2026</h1>
+        <p class="hero-desc">Struktur kurikulum baru berstandar akreditasi IABEE serta panduan lengkap mekanisme
+          peralihan angkatan 2023–2025.</p>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-val">144</span>
+            <span class="stat-lbl">Total SKS</span>
+          </div>
+          <div class="stat-item"
+            style="border-left: 1px solid rgba(255,255,255,0.15); border-right: 1px solid rgba(255,255,255,0.15); padding: 0 20px;">
+            <span class="stat-val">8</span>
+            <span class="stat-lbl">Semester</span>
+          </div>
+          <div class="stat-item" style="border-right: 1px solid rgba(255,255,255,0.15); padding-right: 20px;">
+            <span class="stat-val">5</span>
+            <span class="stat-lbl">CPL Lulusan</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-val">4</span>
+            <span class="stat-lbl">Klaster Spesialisasi</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 2: Visi & Misi -->
+    <div class="slide" data-title="Visi &amp; Misi">
+      <span class="slide-tag">Pengantar</span>
+      <h2 class="slide-heading">Landasan Kurikulum &amp; Visi Keilmuan</h2>
+      <div class="grid-3">
+        <div class="card">
+          <span class="card-label">Visi FT UGM</span>
+          <h3 class="card-title">Pendidikan Teknik Global</h3>
+          <p class="card-desc">Lembaga pendidikan tinggi teknik berjejaring nasional dan global untuk menguatkan
+            kemandirian, kedaulatan bangsa, pelambatan entropi dunia, dan peradaban baru.</p>
+        </div>
+        <div class="card">
+          <span class="card-label">Visi DTETI</span>
+          <h3 class="card-title">Inovasi Universal</h3>
+          <p class="card-desc">Menjadi sumber inovasi yang universal di Bidang Ilmu Teknik Elektro dan Teknologi
+            Informasi untuk kepentingan bangsa dan kemainan yang dijiwai Pancasila.</p>
+        </div>
+        <div class="card accent-yellow">
+          <span class="card-label">Visi Keilmuan TB</span>
+          <h3 class="card-title">Penyelesaian Masalah Biomedis</h3>
+          <p class="card-desc">Menjadi sumber inovasi yang universal di Bidang Ilmu Teknik Elektro & Teknologi Informasi
+            dalam <strong>penyelesaian masalah Biomedis</strong> untuk kepentingan bangsa dan kemanusiaan.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 3: PEO -->
+    <div class="slide" data-title="Program Educational Objectives (PEO)">
+      <span class="slide-tag">Tujuan Program Studi</span>
+      <h2 class="slide-heading">Program Educational Objectives (PEO)</h2>
+      <div class="grid-2">
+        <div class="card">
+          <span class="card-label">PEO 1</span>
+          <h3 class="card-title">Character &amp; Leadership</h3>
+          <p class="card-desc">Menunjukkan kualitas kepemimpinan yang kuat, menjunjung tinggi standar etika yang ketat,
+            dan menjalani pembelajaran sepanjang hayat dengan adaptabilitas tinggi terhadap isu global dan sosial.</p>
+        </div>
+        <div class="card">
+          <span class="card-label">PEO 2</span>
+          <h3 class="card-title">Career Success &amp; Integrity</h3>
+          <p class="card-desc">Meraih kesuksesan dalam karier teknis atau profesional di bidang teknik biomedis dengan
+            menunjukkan integritas moral, kompetensi profesional tingkat tinggi, dan kemampuan komunikasi yang efektif.
+          </p>
+        </div>
+      </div>
+      <div class="alert-banner">
+        Kedua tujuan ini dirancang agar lulusan memiliki daya saing kuat baik di ranah keinsinyuran praktis maupun riset
+        lanjutan secara global.
+      </div>
+    </div>
+
+    <!-- SLIDE 4: Capaian Pembelajaran Lulusan (CPL) -->
+    <div class="slide" data-title="Capaian Pembelajaran Lulusan">
+      <span class="slide-tag">Kompetensi</span>
+      <h2 class="slide-heading">5 Capaian Pembelajaran Lulusan (CPL)</h2>
+      <div class="flex-column" style="justify-content: space-between;">
+        <div class="rule-item"><span class="rule-num">1</span>
+          <div class="rule-text"><strong>Ethics and Professional Responsibilities (CPL 1)</strong>Mengenali tanggung
+            jawab profesional, bertindak dengan integritas moral, dan membuat keputusan berbasis pertimbangan etis,
+            hukum, serta dampak sosial-lingkungan.</div>
+        </div>
+        <div class="rule-item"><span class="rule-num">2</span>
+          <div class="rule-text"><strong>Problem-Solving and Experimentation (CPL 2)</strong>Menganalisis masalah teknik
+            biomedis yang kompleks dengan menerapkan prinsip matematika, sains dasar (biologi/fisika), dan keteknikan
+            serta melakukan analisis eksperimen.</div>
+        </div>
+        <div class="rule-item"><span class="rule-num">3</span>
+          <div class="rule-text"><strong>Contextual Engineering Solutions (CPL 3)</strong>Merancang,
+            mengimplementasikan, dan mengevaluasi solusi rekayasa terintegrasi yang memenuhi kebutuhan spesifik pengguna
+            dengan batasan realistis.</div>
+        </div>
+        <div class="rule-item"><span class="rule-num">4</span>
+          <div class="rule-text"><strong>Communicate and Collaborate Effectively (CPL 4)</strong>Berkomunikasi secara
+            efektif dalam berbagai format profesional serta bekerja kolaboratif sebagai anggota atau pemimpin tim
+            multidisiplin.</div>
+        </div>
+        <div class="rule-item"><span class="rule-num">5</span>
+          <div class="rule-text"><strong>Lifelong Learning and Development (CPL 5)</strong>Memperoleh dan menerapkan
+            pengetahuan baru secara mandiri, menguasai modern engineering tools, serta berkomitmen pada pengembangan
+            diri berkelanjutan.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 5: Penyelarasan CPL - IABEE -->
+    <div class="slide" data-title="Penyelarasan CPL - IABEE">
+      <span class="slide-tag">Akreditasi</span>
+      <h2 class="slide-heading">Pemetaan CPL Program Studi ke Standar IABEE</h2>
+      <div class="table-container">
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 50%;">Capaian Pembelajaran Lulusan (CPL) Teknik Biomedis UGM</th>
+                <th style="width: 50%;">Kriteria Kompetensi Lulusan IABEE (Kriteria Umum)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>CPL 1</strong> — Tanggung Jawab Profesional &amp; Etika</td>
+                <td><strong>Kompetensi (i)</strong>: Etika profesi dan tanggung jawab insinyur dalam masyarakat.</td>
+              </tr>
+              <tr>
+                <td><strong>CPL 2</strong> — Pemecahan Masalah &amp; Eksperimentasi</td>
+                <td><strong>Kompetensi (a), (c), (d)</strong>: Aplikasi matematika/sains, eksperimen, investigasi
+                  masalah kompleks.</td>
+              </tr>
+              <tr>
+                <td><strong>CPL 3</strong> — Desain &amp; Solusi Rekayasa Kontekstual</td>
+                <td><strong>Kompetensi (b)</strong>: Desain sistem/komponen/proses biomedis sesuai kebutuhan dan
+                  batasan.</td>
+              </tr>
+              <tr>
+                <td><strong>CPL 4</strong> — Komunikasi &amp; Kerja Sama Tim</td>
+                <td><strong>Kompetensi (f), (g), (h)</strong>: Komunikasi efektif tertulis/lisan, kerja sama tim
+                  multidisiplin.</td>
+              </tr>
+              <tr>
+                <td><strong>CPL 5</strong> — Pembelajaran Sepanjang Hayat &amp; Adaptasi Teknologi</td>
+                <td><strong>Kompetensi (e), (j)</strong>: Pembelajaran mandiri sepanjang hayat, penggunaan metode
+                  rekayasa modern.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 6: Struktur Kurikulum Overview -->
+    <div class="slide" data-title="Struktur Kurikulum Overview">
+      <span class="slide-tag">Struktur Makro</span>
+      <h2 class="slide-heading">Pemetaan Rumpun Kurikulum 2026</h2>
+      <div class="grid-4" style="flex: unset; margin-bottom: 4px;">
+        <div class="card"><span class="card-label">Basic Sciences &amp; Math</span>
+          <div class="card-title" style="color: var(--bs-text)">39 SKS (27.08%)</div>
+        </div>
+        <div class="card"><span class="card-label">Engineering Topic</span>
+          <div class="card-title" style="color: var(--et-text)">61 SKS (42.36%)</div>
+        </div>
+        <div class="card"><span class="card-label">General Education</span>
+          <div class="card-title" style="color: #047857">25 SKS (17.36%)</div>
+        </div>
+        <div class="card accent-yellow"><span class="card-label">Specialization</span>
+          <div class="card-title" style="color: var(--sp-text)">19 SKS (13.19%)</div>
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <span class="card-label">Fase Foundational (Sem 1-4)</span>
+          <p class="card-desc">Fokus pada fondasi matematika kuat, sains dasar biomedis (fisika, kimia, biologi sel,
+            anatomi, fisiologi), dasar pemrograman, dan analisis untai listrik.</p>
+        </div>
+        <div class="card accent-yellow">
+          <span class="card-label">Fase Terapan &amp; Industri (Sem 5-8)</span>
+          <p class="card-desc">Pengolahan isyarat/citra, kecerdasan artifisial, biomekanika, proyek desain (Junior,
+            Senior, Perancangan 1 & 2), magang industri 1 semester, dan mata kuliah spesialisasi klaster.</p>
+        </div>
+      </div>
+      <div class="legend-row">
+        <div class="legend-item"><span class="legend-dot bs"></span> Basic Sciences &amp; Math (BS)</div>
+        <div class="legend-item"><span class="legend-dot et"></span> Engineering Topic (ET)</div>
+        <div class="legend-item"><span class="legend-dot ge"></span> General Education (GE)</div>
+        <div class="legend-item"><span class="legend-dot sp"></span> Specialization (SP)</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 7: Kurikulum Sem 1 & 2 -->
+    <div class="slide" data-title="Mata Kuliah Semester 1 &amp; 2">
+      <span class="slide-tag">Struktur Kurikulum</span>
+      <h2 class="slide-heading">Struktur Mata Kuliah Semester 1 &amp; 2</h2>
+      <div class="grid-2">
+        <div class="sem-column">
+          <div class="sem-header">
+            <span class="sem-badge">1</span>
+            <span class="sem-name">Semester 1</span>
+            <span class="sem-sks">19 SKS</span>
+          </div>
+          <div class="sem-content">
+            <div class="course-item bs">Kalkulus <b>3</b></div>
+            <div class="course-item bs">Aljabar Linear <b>3</b></div>
+            <div class="course-item bs">Kimia Dasar <b>3</b></div>
+            <div class="course-item bs">Fisika Dasar <b>3</b></div>
+            <div class="course-item bs">Probabilitas &amp; Variabel Acak <b>2</b></div>
+            <div class="course-item et">Anatomi Manusia <b>2</b></div>
+            <div class="course-item et">Pemrograman Dasar <b>2</b></div>
+            <div class="course-item et">Pengantar Keilmuan Teknik Biomedis <b>1</b></div>
+          </div>
+        </div>
+        <div class="sem-column">
+          <div class="sem-header">
+            <span class="sem-badge">2</span>
+            <span class="sem-name">Semester 2</span>
+            <span class="sem-sks">20 SKS</span>
+          </div>
+          <div class="sem-content">
+            <div class="course-item bs">Kalkulus Variabel Jamak <b>3</b></div>
+            <div class="course-item bs">Analisis Variabel Kompleks <b>2</b></div>
+            <div class="course-item bs">Statistika <b>2</b></div>
+            <div class="course-item bs">Fisika Listrik Magnet Gelombang <b>2</b></div>
+            <div class="course-item bs">Biologi Sel &amp; Genetika <b>3</b></div>
+            <div class="course-item et">Fenomena Biotransport <b>2</b></div>
+            <div class="course-item et">Fisiologi Manusia <b>2</b></div>
+            <div class="course-item ge">Konsep Keteknikan / SFS <b>3</b></div>
+            <div class="course-item et">Prakt. Pemrograman Dasar <b>1</b></div>
+          </div>
+        </div>
+      </div>
+      <div class="legend-row">
+        <div class="legend-item"><span class="legend-dot bs"></span> Basic Science (BS)</div>
+        <div class="legend-item"><span class="legend-dot et"></span> Engineering &amp; Biomedis (ET)</div>
+        <div class="legend-item"><span class="legend-dot ge"></span> General Education (GE)</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 8: Kurikulum Sem 3 & 4 -->
+    <div class="slide" data-title="Mata Kuliah Semester 3 &amp; 4">
+      <span class="slide-tag">Struktur Kurikulum</span>
+      <h2 class="slide-heading">Struktur Mata Kuliah Semester 3 &amp; 4</h2>
+      <div class="grid-2">
+        <div class="sem-column">
+          <div class="sem-header">
+            <span class="sem-badge">3</span>
+            <span class="sem-name">Semester 3</span>
+            <span class="sem-sks">20 SKS</span>
+          </div>
+          <div class="sem-content">
+            <div class="course-item bs">Matematika Diskrit <b>3</b></div>
+            <div class="course-item bs">Persamaan Diferensial <b>3</b></div>
+            <div class="course-item et">Teknik Biomagnetika <b>3</b></div>
+            <div class="course-item et">Metode Numeris <b>3</b></div>
+            <div class="course-item et">Elektronika Dasar <b>3</b></div>
+            <div class="course-item et">Analisis Untai Elektrik DC <b>2</b></div>
+            <div class="course-item ge">Bahasa Indonesia &amp; Kom. Profesional <b>2</b></div>
+            <div class="course-item et">Prakt. Sains Dasar <b>1</b></div>
+          </div>
+        </div>
+        <div class="sem-column">
+          <div class="sem-header">
+            <span class="sem-badge">4</span>
+            <span class="sem-name">Semester 4</span>
+            <span class="sem-sks">20 SKS</span>
+          </div>
+          <div class="sem-content">
+            <div class="course-item et">Teknik Digital &amp; Mikroprosesor <b>3</b></div>
+            <div class="course-item et">Isyarat dan Sistem <b>3</b></div>
+            <div class="course-item et">Algoritma Struktur Data <b>2</b></div>
+            <div class="course-item et">Pengukuran &amp; Instrumentasi Biomedis <b>2</b></div>
+            <div class="course-item et">Elektronika Biomedis <b>2</b></div>
+            <div class="course-item et">Sensor, Aktuator, dan Antarmuka <b>2</b></div>
+            <div class="course-item et">Teknik Biomaterial <b>2</b></div>
+            <div class="course-item ge">Pancasila <b>2</b></div>
+            <div class="course-item et">Proyek Junior TB <b>2</b></div>
+          </div>
+        </div>
+      </div>
+      <div class="legend-row">
+        <div class="legend-item"><span class="legend-dot bs"></span> Basic Science (BS)</div>
+        <div class="legend-item"><span class="legend-dot et"></span> Engineering &amp; Biomedis (ET)</div>
+        <div class="legend-item"><span class="legend-dot ge"></span> General Education (GE)</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 9: Kurikulum Sem 5 & 6 -->
+    <div class="slide" data-title="Mata Kuliah Semester 5 &amp; 6">
+      <span class="slide-tag">Struktur Kurikulum</span>
+      <h2 class="slide-heading">Struktur Mata Kuliah Semester 5 &amp; 6</h2>
+      <div class="grid-2">
+        <div class="sem-column">
+          <div class="sem-header">
+            <span class="sem-badge">5</span>
+            <span class="sem-name">Semester 5</span>
+            <span class="sem-sks">19 SKS</span>
+          </div>
+          <div class="sem-content">
+            <div class="course-item et">Teknik Kendali Biomedis <b>2</b></div>
+            <div class="course-item et">Pengolahan Isyarat &amp; Citra <b>2</b></div>
+            <div class="course-item et">Kecerdasan Artifisial <b>2</b></div>
+            <div class="course-item et">Teknik Pencitraan Biomedis <b>2</b></div>
+            <div class="course-item et">Teknik Biomekanika <b>2</b></div>
+            <div class="course-item et">Regulasi &amp; Standar Alat Kesehatan <b>2</b></div>
+            <div class="course-item ge">Kewarganegaraan <b>2</b></div>
+            <div class="course-item ge">Humaniora Digital <b>2</b></div>
+            <div class="course-item et">Proyek Senior TB <b>3</b></div>
+          </div>
+        </div>
+        <div class="sem-column">
+          <div class="sem-header">
+            <span class="sem-badge">6</span>
+            <span class="sem-name">Semester 6</span>
+            <span class="sem-sks">19 SKS</span>
+          </div>
+          <div class="sem-content">
+            <div class="course-item sp">Mata Kuliah Spesialisasi 1 <b>5</b></div>
+            <div class="course-item sp">Mata Kuliah Spesialisasi 2 <b>5</b></div>
+            <div class="course-item sp">Mata Kuliah Spesialisasi 3 <b>5</b></div>
+            <div class="course-item et">Etika Teknik Biomedis <b>1</b></div>
+            <div class="course-item et">Proyek Individu <b>3</b></div>
+          </div>
+        </div>
+      </div>
+      <div class="legend-row">
+        <div class="legend-item"><span class="legend-dot et"></span> Engineering &amp; Biomedis (ET)</div>
+        <div class="legend-item"><span class="legend-dot ge"></span> General Education (GE)</div>
+        <div class="legend-item"><span class="legend-dot sp"></span> Spesialisasi (SP)</div>
+      </div>
+    </div>
+
+    <!-- SLIDE 10: Kurikulum Sem 7 & 8 -->
+    <div class="slide" data-title="Semester 7 &amp; 8 — Fase Industri">
+      <span class="slide-tag">Struktur Kurikulum</span>
+      <h2 class="slide-heading">Semester 7 &amp; 8 — Fase Industri &amp; Penyelesaian</h2>
+      <div class="grid-2">
+        <div class="sem-column">
+          <div class="sem-header industry">
+            <span class="sem-badge">7</span>
+            <span class="sem-name">Semester 7 (Fase Industri)</span>
+            <span class="sem-sks">18 SKS</span>
+          </div>
+          <div class="sem-content">
+            <div class="course-item sp">Mata Kuliah Spesialisasi Industri <b>4</b></div>
+            <div class="course-item et">Magang Industri / Kerja Praktik <b>2</b></div>
+            <div class="course-item ge">Agama <b>2</b></div>
+            <div class="course-item ge">Kuliah Kerja Nyata (KKN) <b>8</b></div>
+            <div class="course-item et">Proyek Perancangan Teknik Biomedis 1 <b>2</b></div>
+          </div>
+        </div>
+        <div class="sem-column">
+          <div class="sem-header">
+            <span class="sem-badge">8</span>
+            <span class="sem-name">Semester 8</span>
+            <span class="sem-sks">9 SKS</span>
+          </div>
+          <div class="sem-content">
+            <div class="course-item et">Kewirausahaan Biomedis <b>2</b></div>
+            <div class="course-item ge">Literasi Kesehatan / K5L <b>2</b></div>
+            <div class="course-item ge">Kuliah Umum / Studium Generale <b>2</b></div>
+            <div class="course-item et">Proyek Perancangan Teknik Biomedis 2 <b>3</b></div>
+          </div>
+        </div>
+      </div>
+      <div class="alert-banner">
+        <strong>Fase Industri:</strong> Mahasiswa dapat mengkonversi program magang minimal 3 bulan menjadi SKS
+        Spesialisasi Industri dan Magang Industri hingga 19 SKS total.
+      </div>
+    </div>
+
+    <!-- SLIDE 11: Visual Skema & Diagram -->
+    <div class="slide" data-title="Skema &amp; Diagram Kurikulum">
+      <span class="slide-tag">Visualisasi</span>
+      <h2 class="slide-heading">Skema Kurikulum &amp; Diagram Alir Prasyarat</h2>
+      <div class="visuals-container">
+        <div class="visual-box">
+          <span>Skema Struktur Kurikulum (Jalur &amp; Semester)</span>
+          <a href="figures/skema-kurikulum.png" class="visual-link" target="_blank">
+            <img src="figures/skema-kurikulum.png" alt="Skema Kurikulum">
+          </a>
+        </div>
+        <div class="visual-box">
+          <span>Diagram Alir Prasyarat Mata Kuliah (K2026)</span>
+          <a href="figures/diagram-alir-tb.svg" class="visual-link" target="_blank">
+            <img src="figures/diagram-alir-tb.svg" alt="Diagram Alir Prasyarat">
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 12: Klaster Spesialisasi -->
+    <div class="slide" data-title="Klaster Mata Kuliah Spesialisasi">
+      <span class="slide-tag">Spesialisasi</span>
+      <h2 class="slide-heading">4 Klaster Spesialisasi (Masing-masing 15 SKS)</h2>
+      <div class="spec-card-grid">
+        <div class="spec-group-card">
+          <h4>1. Diagnostik Pencitraan Biomedis Cerdas</h4>
+          <div class="spec-item">Analisis Citra Biomedis <span>3 SKS</span></div>
+          <div class="spec-item">Analisis Sinyal Biomedis Multimodal <span>3 SKS</span></div>
+          <div class="spec-item">Bioinformatika, Genomik dan Proteomik <span>3 SKS</span></div>
+          <div class="spec-item">Clinical Procedure, Safety &amp; Diagnostics <span>2 SKS</span></div>
+          <div class="spec-item">Komputasi Biologi / Tomografi <span>4 SKS</span></div>
+        </div>
+        <div class="spec-group-card">
+          <h4>2. Telemedisin (Informatika Kesehatan)</h4>
+          <div class="spec-item">Internet of Medical Things (IoMT) <span>2 SKS</span></div>
+          <div class="spec-item">Jaringan Komunikasi Data / Biosiber <span>6 SKS</span></div>
+          <div class="spec-item">Komputasi Awan <span>2 SKS</span></div>
+          <div class="spec-item">Sistem Komunikasi / Tek. Telekomunikasi <span>5 SKS</span></div>
+        </div>
+        <div class="spec-group-card">
+          <h4>3. Sistem Biomedis Terintegrasi Manusia</h4>
+          <div class="spec-item">Antarmuka &amp; Pengalaman Pengguna (UI/UX) <span>2 SKS</span></div>
+          <div class="spec-item">Manajemen Informasi Biomedis / Sibernetika <span>4 SKS</span></div>
+          <div class="spec-item">Sistem Instrumentasi Biomedis Cerdas <span>3 SKS</span></div>
+          <div class="spec-item">Sistem Manusia-Mesin <span>3 SKS</span></div>
+          <div class="spec-item">Teknologi Asistif dan Rehabilitasi <span>3 SKS</span></div>
+        </div>
+        <div class="spec-group-card">
+          <h4>4. Manufaktur Biomedis Tingkat Lanjut</h4>
+          <div class="spec-item">Bioelectrochemistry / Microfluidics <span>4 SKS</span></div>
+          <div class="spec-item">Biomedical IC Design <span>3 SKS</span></div>
+          <div class="spec-item">Microelectronics <span>3 SKS</span></div>
+          <div class="spec-item">Robotika Biomedis / Otomasi <span>5 SKS</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 13: Aturan Peralihan 1-5 -->
+    <div class="slide" data-title="Prinsip Aturan Peralihan (1–5)">
+      <span class="slide-tag">Peralihan</span>
+      <h2 class="slide-heading">Prinsip Aturan Peralihan (Aturan 1–5)</h2>
+      <div class="flex-column" style="justify-content: space-between;">
+        <div class="rule-item"><span class="rule-num">1</span>
+          <div class="rule-text"><strong>Implementasi Kurikulum Baru</strong>Mulai semester gasal Tahun Akademik
+            implementasi, kurikulum yang berlaku bagi mahasiswa baru adalah Kurikulum 2026.</div>
+        </div>
+        <div class="rule-item"><span class="rule-num">2</span>
+          <div class="rule-text"><strong>Satu Kurikulum Aktif</strong>Pengelola Program Studi hanya akan menjalankan
+            satu kurikulum yaitu Kurikulum 2026 secara aktif.</div>
+        </div>
+        <div class="rule-item"><span class="rule-num">3</span>
+          <div class="rule-text"><strong>Migrasi Penuh</strong>Mahasiswa angkatan sebelum 2026 dapat bermigrasi penuh ke
+            Kurikulum 2026 dengan mekanisme ekuivalensi.</div>
+        </div>
+        <div class="rule-item"><span class="rule-num">4</span>
+          <div class="rule-text"><strong>Pengakuan Mata Kuliah K2021</strong>Semua mata kuliah yang telah ditempuh dan
+            lulus pada K2021 diakui berdasarkan tabel ekuivalensi K2021-K2026.</div>
+        </div>
+        <div class="rule-item"><span class="rule-num">5</span>
+          <div class="rule-text"><strong>Pengakuan Perubahan Bobot SKS</strong>Jika SKS baru lebih kecil, kelebihan SKS
+            diakui kumulatif. Jika lebih besar, mahasiswa wajib memenuhi kekurangan SKS sesuai arahan program studi.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 14: Aturan Peralihan 6-10 -->
+    <div class="slide" data-title="Prinsip Aturan Peralihan (6–10)">
+      <span class="slide-tag">Peralihan</span>
+      <h2 class="slide-heading">Prinsip Aturan Peralihan (Aturan 6–10)</h2>
+      <div class="flex-column" style="justify-content: space-between;">
+        <div class="rule-item"><span class="rule-num">6</span>
+          <div class="rule-text"><strong>Mata Kuliah Dihapus</strong>MK lama yang dihapus tanpa ekuivalensi: jika lulus
+            tetap diakui dalam SKS kelulusan; jika belum lulus wajib mengambil mata kuliah pengganti.</div>
+        </div>
+        <div class="rule-item"><span class="rule-num">7</span>
+          <div class="rule-text"><strong>Perbaikan Nilai</strong>Mahasiswa yang memperbaiki nilai setelah K2026 berlaku
+            wajib mengikuti struktur &amp; bobot SKS baru pada K2026.</div>
+        </div>
+        <div class="rule-item"><span class="rule-num">8</span>
+          <div class="rule-text"><strong>Kewajiban Struktur Minimal 144 SKS</strong>Mahasiswa migrasi wajib memenuhi
+            minimal 144 SKS sesuai kurikulum baru, termasuk kewajiban mata kuliah wajib baru.</div>
+        </div>
+        <div class="rule-item" style="border-left-color: var(--ugm-yellow-dark);"><span class="rule-num"
+            style="background: var(--ugm-yellow-dark); color: var(--ugm-white)">9</span>
+          <div class="rule-text"><strong>Aturan Skripsi &amp; Tugas Akhir</strong>Tugas Akhir K2026 adalah Proyek
+            Perancangan Biomedis (2 sem). Angkatan 2022 ke bawah yang sedang Skripsi dapat melanjutkan Skripsi
+            <em>atau</em> klaim Proyek Perancangan dan mengambil Proyek Individu.
+          </div>
+        </div>
+        <div class="rule-item"><span class="rule-num">10</span>
+          <div class="rule-text"><strong>Kebijakan Ketua Program Studi</strong>Hal-hal yang belum tercantum dalam aturan
+            peralihan ini sepenuhnya menjadi wewenang kebijakan Kaprodi Teknik Biomedis DTETI FT UGM.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 15: Peralihan 2025 -->
+    <div class="slide" data-title="Peralihan — Angkatan 2025">
+      <span class="slide-tag">Mekanisme Angkatan</span>
+      <h2 class="slide-heading">Penyesuaian untuk Angkatan 2025</h2>
+      <div class="grid-2">
+        <div class="flex-column">
+          <div class="cohort-card">
+            <div class="cohort-card-left">
+              <h3>Angkatan 2025 (Baru selesai Semester 2)</h3>
+              <p>Transisi paling mulus karena baru menempuh perkuliahan dasar di Semester 1 dan 2.</p>
+            </div>
+            <div class="cohort-card-stats">
+              <div class="cohort-card-stat">
+                <strong>38</strong>
+                <span>SKS Lulus</span>
+              </div>
+              <div class="cohort-card-stat">
+                <strong>144</strong>
+                <span>Target SKS</span>
+              </div>
+            </div>
+          </div>
+          <div class="table-container">
+            <div class="table-scroll">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 15%">Semester</th>
+                    <th>Mata Kuliah Penyesuaian</th>
+                    <th style="text-align: center; width: 15%">Beban</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Sem 1 &amp; 2</strong></td>
+                    <td>Mengakui mata kuliah K2021 yang sudah ditempuh (38 SKS).</td>
+                    <td style="font-family: 'JetBrains Mono', monospace; text-align: center">38 SKS</td>
+                  </tr>
+                  <tr style="background: var(--ugm-yellow-tint)">
+                    <td><strong>Sem 3</strong></td>
+                    <td>Struktur K2026 Semester 3 + mengambil <strong>Anatomi (2 SKS)</strong> &amp; <strong>PKTB (1
+                        SKS)</strong>.</td>
+                    <td style="font-family: 'JetBrains Mono', monospace; text-align: center">20 SKS</td>
+                  </tr>
+                  <tr style="background: var(--ugm-yellow-tint)">
+                    <td><strong>Sem 4</strong></td>
+                    <td>Struktur K2026 Semester 4 + mengambil <strong>Fisiologi (2 SKS)</strong> &amp;
+                      <strong>Statistika (2 SKS)</strong>.</td>
+                    <td style="font-family: 'JetBrains Mono', monospace; text-align: center">21 SKS</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Sem 5–8</strong></td>
+                    <td>Mengikuti struktur Kurikulum 2026 sepenuhnya tanpa ada penyesuaian tambahan.</td>
+                    <td style="font-family: 'JetBrains Mono', monospace; text-align: center">65 SKS</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="flex-column">
+          <div class="detail-grid">
+            <div class="detail-card">
+              <div class="detail-head"><span>Semester 3</span><span>20 SKS</span></div>
+              <ul>
+                <li class="new">Anatomi + PKTB <span>3</span></li>
+                <li>Persamaan Diferensial <span>3</span></li>
+                <li>Teknik Biomagnetika <span>3</span></li>
+                <li>Metode Numeris <span>3</span></li>
+                <li>Elektronika Dasar <span>3</span></li>
+                <li>Analisis Untai Elektrik DC <span>2</span></li>
+                <li>Bahasa Indonesia &amp; Kom. Profesional <span>2</span></li>
+                <li>Prakt. Sains Dasar <span>1</span></li>
+              </ul>
+            </div>
+            <div class="detail-card">
+              <div class="detail-head"><span>Semester 4</span><span>20 SKS</span></div>
+              <ul>
+                <li class="new">Fisiologi + Statistika <span>4</span></li>
+                <li>Teknik Digital &amp; Mikroprosesor <span>3</span></li>
+                <li>Isyarat dan Sistem <span>3</span></li>
+                <li>Algoritma Struktur Data <span>2</span></li>
+                <li>Pengukuran &amp; Instrumentasi Biomedis <span>2</span></li>
+                <li>Elektronika Biomedis <span>2</span></li>
+                <li>Sensor, Aktuator, dan Antarmuka <span>2</span></li>
+                <li>Teknik Biomaterial <span>2</span></li>
+                <li>Pancasila <span>2</span></li>
+                <li>Proyek Junior TB <span>2</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 16: Peralihan 2024 -->
+    <div class="slide" data-title="Peralihan — Angkatan 2024">
+      <span class="slide-tag">Mekanisme Angkatan</span>
+      <h2 class="slide-heading">Penyesuaian untuk Angkatan 2024</h2>
+      <div class="grid-2">
+        <div class="flex-column">
+          <div class="cohort-card">
+            <div class="cohort-card-left">
+              <h3>Angkatan 2024 (Baru selesai Semester 4)</h3>
+              <p>Telah menempuh separuh dari masa kuliah utama. Penyesuaian dimulai dari Semester 5.</p>
+            </div>
+            <div class="cohort-card-stats">
+              <div class="cohort-card-stat">
+                <strong>79</strong>
+                <span>SKS Lulus</span>
+              </div>
+              <div class="cohort-card-stat">
+                <strong>146</strong>
+                <span>Target SKS</span>
+              </div>
+            </div>
+          </div>
+          <div class="table-container">
+            <div class="table-scroll">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 15%">Semester</th>
+                    <th>Mata Kuliah Penyesuaian</th>
+                    <th style="text-align: center; width: 15%">Beban</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Sem 1–4</strong></td>
+                    <td>Mengakui mata kuliah K2021 yang sudah ditempuh (79 SKS).</td>
+                    <td style="font-family: 'JetBrains Mono', monospace; text-align: center">79 SKS</td>
+                  </tr>
+                  <tr style="background: var(--ugm-yellow-tint)">
+                    <td><strong>Sem 5</strong></td>
+                    <td>Struktur K2026 + mengambil <strong>Elektronika Biomedis (2 SKS)</strong>, <strong>Anatomi (2
+                        SKS)</strong>, <strong>PKTB (1 SKS)</strong>, &amp; <strong>Proyek Junior (2 SKS)</strong>.</td>
+                    <td style="font-family: 'JetBrains Mono', monospace; text-align: center">19 SKS</td>
+                  </tr>
+                  <tr style="background: var(--ugm-yellow-tint)">
+                    <td><strong>Sem 6</strong></td>
+                    <td>Struktur K2026 + mengambil <strong>Fisiologi (2 SKS)</strong>, <strong>Sensor &amp; Antarmuka (2
+                        SKS)</strong>, <strong>Pancasila (2 SKS)</strong>, &amp; <strong>Proyek Senior (3 SKS)</strong>.
+                    </td>
+                    <td style="font-family: 'JetBrains Mono', monospace; text-align: center">19 SKS</td>
+                  </tr>
+                  <tr style="background: var(--ugm-yellow-tint)">
+                    <td><strong>Sem 7</strong></td>
+                    <td>Mengambil <strong>Bahasa Indonesia &amp; Kom. Profesional (2 SKS)</strong>.</td>
+                    <td style="font-family: 'JetBrains Mono', monospace; text-align: center">20 SKS</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="flex-column">
+          <div class="detail-grid">
+            <div class="detail-card">
+              <div class="detail-head"><span>Semester 5</span><span>19 SKS</span></div>
+              <ul>
+                <li class="new">Elektronika Biomedis <span>2</span></li>
+                <li class="new">Anatomi <span>2</span></li>
+                <li>Kecerdasan Artifisial <span>2</span></li>
+                <li>Teknik Pencitraan Biomedis <span>2</span></li>
+                <li>Teknik Biomekanika <span>2</span></li>
+                <li>Regulasi &amp; Standar Alat Kesehatan <span>2</span></li>
+                <li>Kewarganegaraan <span>2</span></li>
+                <li>Humaniora Digital <span>2</span></li>
+                <li class="new">Proyek Junior TB <span>2</span></li>
+              </ul>
+            </div>
+            <div class="detail-card">
+              <div class="detail-head"><span>Semester 6</span><span>19 SKS</span></div>
+              <ul>
+                <li class="new">Fisiologi + Spesialisasi 1 <span>5</span></li>
+                <li class="new">Sensor &amp; Antarmuka + Spesialisasi 2 <span>5</span></li>
+                <li class="new">Pancasila + Proyek Senior + Spesialisasi 3 <span>5</span></li>
+                <li>Etika Teknik Biomedis <span>1</span></li>
+                <li>Proyek Individu <span>3</span></li>
+              </ul>
+            </div>
+            <div class="detail-card" style="grid-column: span 2;">
+              <div class="detail-head"><span>Semester 7 — Fase Industri</span><span>18 SKS</span></div>
+              <ul>
+                <li>Spesialisasi Industri <span>4</span></li>
+                <li class="new">Bahasa Indonesia <span>2</span></li>
+                <li>Agama <span>2</span></li>
+                <li>Kuliah Kerja Nyata (KKN) <span>8</span></li>
+                <li>Proyek Perancangan TB 1 <span>2</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 17: Peralihan 2023 -->
+    <div class="slide" data-title="Peralihan — Angkatan 2023">
+      <span class="slide-tag">Mekanisme Angkatan</span>
+      <h2 class="slide-heading">Penyesuaian untuk Angkatan 2023</h2>
+      <div class="grid-2">
+        <div class="flex-column">
+          <div class="cohort-card">
+            <div class="cohort-card-left">
+              <h3>Angkatan 2023 (Baru selesai Semester 6)</h3>
+              <p>Memasuki fase akhir studi. Penyesuaian berfokus pada Spesialisasi dan Proyek Perancangan.</p>
+            </div>
+            <div class="cohort-card-stats">
+              <div class="cohort-card-stat">
+                <strong>116</strong>
+                <span>SKS Lulus</span>
+              </div>
+              <div class="cohort-card-stat">
+                <strong>146</strong>
+                <span>Target SKS</span>
+              </div>
+            </div>
+          </div>
+          <div class="table-container">
+            <div class="table-scroll">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 15%">Semester</th>
+                    <th>Mata Kuliah Penyesuaian</th>
+                    <th style="text-align: center; width: 15%">Beban</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Sem 1–6</strong></td>
+                    <td>Mengakui mata kuliah K2021 yang sudah ditempuh (116 SKS).</td>
+                    <td style="font-family: 'JetBrains Mono', monospace; text-align: center">116 SKS</td>
+                  </tr>
+                  <tr style="background: var(--ugm-yellow-tint)">
+                    <td><strong>Sem 7</strong></td>
+                    <td>Struktur K2026 + mengambil <strong>Etika TB (1 SKS)</strong>, <strong>Regulasi Alkes (2
+                        SKS)</strong>, <strong>Kecerdasan Artifisial (2 SKS)</strong>, &amp; <strong>Proyek Perancangan
+                        2 (2 SKS)</strong>.</td>
+                    <td style="font-family: 'JetBrains Mono', monospace; text-align: center">19 SKS</td>
+                  </tr>
+                  <tr style="background: var(--ugm-yellow-tint)">
+                    <td><strong>Sem 8</strong></td>
+                    <td>Struktur K2026 + mengambil <strong>Humaniora Digital (2 SKS)</strong> &amp; <strong>Proyek
+                        Individu (3 SKS)</strong>.</td>
+                    <td style="font-family: 'JetBrains Mono', monospace; text-align: center">11 SKS</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="flex-column">
+          <div class="detail-grid">
+            <div class="detail-card">
+              <div class="detail-head"><span>Semester 7 — Fase Industri</span><span>18 SKS</span></div>
+              <ul>
+                <li class="new">Etika TB + Spesialisasi Industri <span>4</span></li>
+                <li class="new">Regulasi &amp; Standar Alat Kesehatan <span>2</span></li>
+                <li class="new">Kecerdasan Artifisial <span>2</span></li>
+                <li>Kuliah Kerja Nyata (KKN) <span>8</span></li>
+                <li class="new">Proyek Perancangan TB 2 <span>3</span></li>
+              </ul>
+            </div>
+            <div class="detail-card">
+              <div class="detail-head"><span>Semester 8</span><span>9 SKS</span></div>
+              <ul>
+                <li>Kewirausahaan Biomedis <span>2</span></li>
+                <li class="new">Digital Humanities (Humaniora Digital) <span>2</span></li>
+                <li>Kuliah Umum <span>2</span></li>
+                <li class="new">Proyek Individu <span>3</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 18: Tabel Ekuivalensi 1 & 2 -->
+    <div class="slide" data-title="Penyetaraan MK Semester 1 &amp; 2">
+      <span class="slide-tag">Ekuivalensi Mata Kuliah</span>
+      <h2 class="slide-heading">Daftar Ekuivalensi Kurikulum 2021 → 2026 (Semester 1 &amp; 2)</h2>
+      <div class="table-container">
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>Mata Kuliah Kurikulum 2021</th>
+                <th style="text-align: center;">SKS</th>
+                <th>Mata Kuliah Ekuivalen K2026</th>
+                <th style="text-align: center;">SKS</th>
+                <th>Status / Keterangan</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="down-row">
+                <td>Pemrograman Dasar</td>
+                <td style="text-align: center;">3</td>
+                <td>Pemrograman Dasar</td>
+                <td style="text-align: center;">2</td>
+                <td><span class="badge-diff down">Turun 1 SKS</span></td>
+              </tr>
+              <tr class="up-row">
+                <td>Teori Vektor dan Matriks</td>
+                <td style="text-align: center;">2</td>
+                <td>Aljabar Linear</td>
+                <td style="text-align: center;">3</td>
+                <td><span class="badge-diff up">Naik 1 SKS</span></td>
+              </tr>
+              <tr class="up-row">
+                <td>Fisika Mekanika Klasik</td>
+                <td style="text-align: center;">2</td>
+                <td>Fisika Dasar</td>
+                <td style="text-align: center;">3</td>
+                <td><span class="badge-diff up">Naik 1 SKS</span></td>
+              </tr>
+              <tr class="up-row">
+                <td>Kimia Dasar</td>
+                <td style="text-align: center;">2</td>
+                <td>Kimia Dasar</td>
+                <td style="text-align: center;">3</td>
+                <td><span class="badge-diff up">Naik 1 SKS</span></td>
+              </tr>
+              <tr class="up-row">
+                <td>Teknik Digital</td>
+                <td style="text-align: center;">2</td>
+                <td>Teknik Digital &amp; Mikroprosesor</td>
+                <td style="text-align: center;">3</td>
+                <td><span class="badge-diff up">Naik 1 SKS</span></td>
+              </tr>
+              <tr class="merge-row">
+                <td>Aljabar Linear (Sem 2)</td>
+                <td style="text-align: center;">3</td>
+                <td>Digabung ke Aljabar Linear (Sem 1)</td>
+                <td style="text-align: center;">3</td>
+                <td><span class="badge-diff merge">Restrukturisasi</span></td>
+              </tr>
+              <tr class="up-row">
+                <td>Biologi</td>
+                <td style="text-align: center;">2</td>
+                <td>Biologi Sel dan Genetika</td>
+                <td style="text-align: center;">3</td>
+                <td><span class="badge-diff up">Naik 1 SKS</span></td>
+              </tr>
+              <tr class="up-row">
+                <td>Konsep Keteknikan</td>
+                <td style="text-align: center;">2</td>
+                <td>Konsep Keteknikan / SFS</td>
+                <td style="text-align: center;">3</td>
+                <td><span class="badge-diff up">Naik 1 SKS</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 19: Tabel Ekuivalensi 3 & 4 -->
+    <div class="slide" data-title="Penyetaraan MK Semester 3 &amp; 4">
+      <span class="slide-tag">Ekuivalensi Mata Kuliah</span>
+      <h2 class="slide-heading">Daftar Ekuivalensi Kurikulum 2021 → 2026 (Semester 3 &amp; 4)</h2>
+      <div class="table-container">
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>Mata Kuliah Kurikulum 2021</th>
+                <th style="text-align: center;">SKS</th>
+                <th>Mata Kuliah Ekuivalen K2026</th>
+                <th style="text-align: center;">SKS</th>
+                <th>Status / Keterangan</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="merge-row">
+                <td>Sistem Mikroprosesor (Sem 3)</td>
+                <td style="text-align: center;">3</td>
+                <td>Digabung ke Tek. Digital &amp; Mikroprosesor</td>
+                <td style="text-align: center;">3</td>
+                <td><span class="badge-diff merge">Restrukturisasi</span></td>
+              </tr>
+              <tr class="del-row">
+                <td>Telekomunikasi Dasar (Sem 3)</td>
+                <td style="text-align: center;">2</td>
+                <td><span style="font-style: italic;">Dihapus dari Kurikulum Wajib</span></td>
+                <td style="text-align: center;">-</td>
+                <td><span class="badge-diff del">Dihapus</span></td>
+              </tr>
+              <tr class="down-row">
+                <td>Algoritma dan Struktur Data (Sem 4)</td>
+                <td style="text-align: center;">3</td>
+                <td>Algoritma Struktur Data</td>
+                <td style="text-align: center;">2</td>
+                <td><span class="badge-diff down">Turun 1 SKS</span></td>
+              </tr>
+              <tr class="down-row">
+                <td>Teknik Kendali (Sem 4)</td>
+                <td style="text-align: center;">3</td>
+                <td>Teknik Kendali Biomedis</td>
+                <td style="text-align: center;">2</td>
+                <td><span class="badge-diff down">Turun 1 SKS</span></td>
+              </tr>
+              <tr class="del-row">
+                <td>Jaringan Komunikasi &amp; Data (Sem 4)</td>
+                <td style="text-align: center;">3</td>
+                <td><span style="font-style: italic;">Dihapus dari Kurikulum Wajib</span></td>
+                <td style="text-align: center;">-</td>
+                <td><span class="badge-diff del">Dihapus</span></td>
+              </tr>
+              <tr class="down-row">
+                <td>Teknik Biomagnetika (Sem 4)</td>
+                <td style="text-align: center;">3</td>
+                <td>Teknik Biomagnetika (Sem 3)</td>
+                <td style="text-align: center;">3</td>
+                <td><span class="badge-diff same">Ekuivalen</span></td>
+              </tr>
+              <tr class="merge-row">
+                <td>Tek. Pengolahan Citra Biomedis (Sem 4)</td>
+                <td style="text-align: center;">2</td>
+                <td rowspan="2">Pengolahan Isyarat &amp; Citra (Sem 5)</td>
+                <td style="text-align: center;" rowspan="2">2</td>
+                <td rowspan="2"><span class="badge-diff merge">Restrukturisasi</span></td>
+              </tr>
+              <tr class="merge-row">
+                <td>Tek. Pengolahan Isyarat Biomedis (Sem 4)</td>
+                <td style="text-align: center;">2</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 20: Tabel Ekuivalensi 5 & 6 -->
+    <div class="slide" data-title="Penyetaraan MK Semester 5 &amp; 6">
+      <span class="slide-tag">Ekuivalensi Mata Kuliah</span>
+      <h2 class="slide-heading">Daftar Ekuivalensi Kurikulum 2021 → 2026 (Semester 5 &amp; 6)</h2>
+      <div class="table-container">
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>Mata Kuliah Kurikulum 2021</th>
+                <th style="text-align: center;">SKS</th>
+                <th>Mata Kuliah Ekuivalen K2026</th>
+                <th style="text-align: center;">SKS</th>
+                <th>Status / Keterangan</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="del-row">
+                <td>Teknik Optimisasi (Sem 5)</td>
+                <td style="text-align: center;">2</td>
+                <td><span style="font-style: italic;">Dihapus dari Kurikulum Wajib</span></td>
+                <td style="text-align: center;">-</td>
+                <td><span class="badge-diff del">Dihapus</span></td>
+              </tr>
+              <tr>
+                <td>Kerja Praktik (Sem 5)</td>
+                <td style="text-align: center;">2</td>
+                <td>Magang Industri / KP</td>
+                <td style="text-align: center;">2</td>
+                <td><span class="badge-diff same">Ekuivalen</span></td>
+              </tr>
+              <tr class="up-row">
+                <td>Anatomi dan Fisiologi (Sem 5)</td>
+                <td style="text-align: center;">3</td>
+                <td>Anatomi Manusia (2) + Fisiologi Manusia (2)</td>
+                <td style="text-align: center;">4</td>
+                <td><span class="badge-diff up">Pecah &amp; SKS Naik</span></td>
+              </tr>
+              <tr>
+                <td>Sensor dan Transduser (Sem 5)</td>
+                <td style="text-align: center;">2</td>
+                <td>Sensor, Aktuator, dan Antarmuka</td>
+                <td style="text-align: center;">2</td>
+                <td><span class="badge-diff same">Ekuivalen</span></td>
+              </tr>
+              <tr>
+                <td>Proyek Perancangan TB 1 (Sem 6)</td>
+                <td style="text-align: center;">2</td>
+                <td>Proyek Perancangan TB 1 (Sem 7)</td>
+                <td style="text-align: center;">2</td>
+                <td><span class="badge-diff same">Ekuivalen</span></td>
+              </tr>
+              <tr>
+                <td>Bahasa Indonesia (Sem 6)</td>
+                <td style="text-align: center;">2</td>
+                <td>Bahasa Indonesia &amp; Kom. Profesional</td>
+                <td style="text-align: center;">2</td>
+                <td><span class="badge-diff same">Ekuivalen</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 21: Tabel Ekuivalensi 7 & 8 -->
+    <div class="slide" data-title="Penyetaraan MK Semester 7 &amp; 8">
+      <span class="slide-tag">Ekuivalensi Mata Kuliah</span>
+      <h2 class="slide-heading">Daftar Ekuivalensi Kurikulum 2021 → 2026 (Semester 7 &amp; 8)</h2>
+      <div class="table-container">
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>Mata Kuliah Kurikulum 2021</th>
+                <th style="text-align: center;">SKS</th>
+                <th>Mata Kuliah Ekuivalen K2026</th>
+                <th style="text-align: center;">SKS</th>
+                <th>Status / Keterangan</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Proyek Perancangan TB 2 (Sem 7)</td>
+                <td style="text-align: center;">2</td>
+                <td>Proyek Perancangan TB 2 (Sem 8)</td>
+                <td style="text-align: center;">3</td>
+                <td><span class="badge-diff up">SKS Naik</span></td>
+              </tr>
+              <tr>
+                <td>Kuliah Kerja Nyata (Sem 7)</td>
+                <td style="text-align: center;">4</td>
+                <td>Kuliah Kerja Nyata (Sem 7)</td>
+                <td style="text-align: center;">8</td>
+                <td><span class="badge-diff same">SKS Konversi</span></td>
+              </tr>
+              <tr>
+                <td>Literasi Kesehatan (Sem 7)</td>
+                <td style="text-align: center;">2</td>
+                <td>Literasi Kesehatan (K5L) (Sem 8)</td>
+                <td style="text-align: center;">2</td>
+                <td><span class="badge-diff same">Ekuivalen</span></td>
+              </tr>
+              <tr>
+                <td>Studium Generale (Sem 8)</td>
+                <td style="text-align: center;">2</td>
+                <td>Kuliah Umum / Studium Generale (Sem 8)</td>
+                <td style="text-align: center;">2</td>
+                <td><span class="badge-diff same">Ekuivalen</span></td>
+              </tr>
+              <tr class="down-row">
+                <td>Skripsi &amp; Pendadaran (Sem 8)</td>
+                <td style="text-align: center;">4</td>
+                <td>Proyek Individu (Sem 6)</td>
+                <td style="text-align: center;">3</td>
+                <td><span class="badge-diff down">SKS Turun</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="alert-banner" style="margin-top: 4px;">
+        <strong>Ketentuan Tugas Akhir:</strong> Skripsi di K2021 diganti oleh ekuivalensi Proyek Individu (3 SKS) pada
+        K2026.
+      </div>
+    </div>
+
+    <!-- SLIDE 22: Persyaratan Yudisium (Aturan 1–4) -->
+    <div class="slide" data-title="Persyaratan Yudisium (1–4)">
+      <span class="slide-tag">Kelulusan</span>
+      <h2 class="slide-heading">Persyaratan Yudisium Kurikulum 2026 (Bagian 1)</h2>
+      <div class="flex-column" style="justify-content: space-between;">
+        <div class="rule-item">
+          <span class="rule-num">1</span>
+          <div class="rule-text"><strong>Capaian CPL Lulusan</strong>Telah mencapai seluruh Capaian Pembelajaran Lulusan
+            (CPL) yang ditetapkan program studi.</div>
+        </div>
+        <div class="rule-item">
+          <span class="rule-num">2</span>
+          <div class="rule-text"><strong>Mata Kuliah Praktikum &amp; Proyek Wajib</strong>Telah menyelesaikan dan
+            dinyatakan lulus seluruh mata kuliah praktikum, Proyek Individu, Proyek Perancangan Teknik Biomedis 1, dan
+            Proyek Perancangan Teknik Biomedis 2.</div>
+        </div>
+        <div class="rule-item">
+          <span class="rule-num">3</span>
+          <div class="rule-text"><strong>Mata Kuliah Wajib Nasional / Universitas</strong>Memperoleh nilai minimal
+            <strong>C</strong> untuk mata kuliah Pancasila, Agama, dan Kewarganegaraan.
+          </div>
+        </div>
+        <div class="rule-item">
+          <span class="rule-num">4</span>
+          <div class="rule-text">
+            <strong>Beban SKS dan Indeks Prestasi</strong>
+            Telah menyelesaikan seluruh mata kuliah wajib dan pilihan dengan ketentuan:
+            <ul style="margin: 4px 0 0 16px; font-size: 10.5px; color: var(--ugm-gray-dark)">
+              <li>Menempuh minimal <strong>144 SKS</strong></li>
+              <li>Indeks Prestasi Kumulatif (IPK) minimal <strong>2.00</strong></li>
+              <li>Mata kuliah dengan nilai <strong>D<25%=36 SKS</strong>
+              <li>Tidak memiliki mata kuliah dengan nilai <strong>E</strong></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 23: Persyaratan Yudisium (Aturan 5–6) -->
+    <div class="slide" data-title="Persyaratan Yudisium (5–6)">
+      <span class="slide-tag">Kelulusan</span>
+      <h2 class="slide-heading">Persyaratan Yudisium Kurikulum 2026 (Bagian 2)</h2>
+      <div class="flex-column" style="gap: 12px;">
+        <div class="rule-item">
+          <span class="rule-num">5</span>
+          <div class="rule-text"><strong>Pedoman Akademik Universitas / Fakultas</strong>Persyaratan nilai kelulusan
+            untuk mata kuliah tingkat universitas dan tingkat fakultas mengikuti pedoman akademik umum yang ditetapkan
+            oleh pihak Universitas Gadjah Mada dan Fakultas Teknik.</div>
+        </div>
+        <div class="rule-item" style="border-left-color: var(--ugm-yellow-dark);">
+          <span class="rule-num" style="background: var(--ugm-yellow-dark); color: var(--ugm-white)">6</span>
+          <div class="rule-text" style="width: 100%;">
+            <strong>Kemampuan Bahasa Inggris Lulusan</strong>
+            Memiliki kemampuan berbahasa Inggris resmi yang dibuktikan dengan skor sertifikat minimal salah satu tes di
+            bawah ini:
+
+            <div class="english-grid">
+              <div class="english-box">
+                <strong>175</strong>
+                <span>AcEPT UGM</span>
+              </div>
+              <div class="english-box">
+                <strong>450</strong>
+                <span>TOEFL ITP</span>
+              </div>
+              <div class="english-box">
+                <strong>54</strong>
+                <span>TOEFL iBT</span>
+              </div>
+              <div class="english-box">
+                <strong>5.0</strong>
+                <span>IELTS</span>
+              </div>
+              <div class="english-box">
+                <strong>450</strong>
+                <span>TOEIC</span>
+              </div>
+              <div class="english-box highlight">
+                <strong>70</strong>
+                <span>Duolingo DET</span>
+              </div>
+              <div class="english-box">
+                <strong>450</strong>
+                <span>TOEFL PBT</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div> <!-- /viewport -->
+
+  <!-- Bottom Control Bar -->
+  <div class="controls-bar">
+    <button class="nav-btn" id="prev-btn" disabled>
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="M15 18l-6-6 6-6" />
+      </svg>
+      Prev
+    </button>
+    <div class="progress-track">
+      <div class="progress-fill" id="progress-bar-fill"></div>
+    </div>
+    <button class="nav-btn" id="next-btn">
+      Next
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+        stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 18l6-6-6-6" />
+      </svg>
+    </button>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const slides = [...document.querySelectorAll('.slide')];
+      const totalSlides = slides.length;
+
+      const titleHeader = document.getElementById('current-slide-title');
+      const slideSelector = document.getElementById('slide-selector');
+      const progressBarFill = document.getElementById('progress-bar-fill');
+      const prevBtn = document.getElementById('prev-btn');
+      const nextBtn = document.getElementById('next-btn');
+
+      let currentIdx = 0;
+
+      // Populate slide dropdown selector dynamically
+      slides.forEach((slide, index) => {
+        const title = slide.dataset.title || `Slide ${index + 1}`;
+        const option = document.createElement('option');
+        option.value = index;
+        option.textContent = `${index + 1}. ${title}`;
+        slideSelector.appendChild(option);
+      });
+
+      function updateSlide(index) {
+        // Bounds checking
+        if (index < 0) index = 0;
+        if (index >= totalSlides) index = totalSlides - 1;
+
+        // Transition classes
+        slides.forEach((slide, i) => {
+          slide.classList.remove('active', 'exit-left');
+          if (i < index) {
+            slide.classList.add('exit-left');
+          }
+        });
+
+        // Set active slide
+        slides[index].classList.add('active');
+        currentIdx = index;
+
+        // Update titles, dropdown selected value, and progress bar
+        const slideTitle = slides[index].dataset.title || 'Kurikulum Teknik Biomedis 2026';
+        titleHeader.textContent = slideTitle;
+        slideSelector.value = index;
+
+        const progressPercentage = ((index + 1) / totalSlides) * 100;
+        progressBarFill.style.width = `${progressPercentage}%`;
+
+        // Update button states
+        prevBtn.disabled = (index === 0);
+        nextBtn.disabled = (index === totalSlides - 1);
+      }
+
+      // Handle dropdown change selection
+      slideSelector.addEventListener('change', (e) => {
+        updateSlide(parseInt(e.target.value, 10));
+      });
+
+      // Event Listeners for Nav Buttons
+      prevBtn.addEventListener('click', () => updateSlide(currentIdx - 1));
+      nextBtn.addEventListener('click', () => updateSlide(currentIdx + 1));
+
+      // Keydown controls (ArrowRight / Space -> Next, ArrowLeft -> Prev, Home -> First, End -> Last)
+      document.addEventListener('keydown', (e) => {
+        const activeTag = document.activeElement?.tagName;
+        if (['INPUT', 'TEXTAREA', 'SELECT', 'BUTTON'].includes(activeTag)) return;
+
+        if (e.key === 'ArrowRight' || e.key === ' ') {
+          e.preventDefault();
+          updateSlide(currentIdx + 1);
+        } else if (e.key === 'ArrowLeft') {
+          e.preventDefault();
+          updateSlide(currentIdx - 1);
+        } else if (e.key === 'Home') {
+          e.preventDefault();
+          updateSlide(0);
+        } else if (e.key === 'End') {
+          e.preventDefault();
+          updateSlide(totalSlides - 1);
+        }
+      });
+
+      // Initialize
+      updateSlide(0);
+    });
+  </script>
+</body>
+
+</html>
