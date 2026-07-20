@@ -404,6 +404,21 @@ code { font-family: var(--mono); font-size: 11px; color: var(--gray-500); }
 .eq-table td:nth-child(4),
 .eq-table td:nth-child(7) { font-family: var(--mono); font-weight: 600; text-align: center; }
 
+/* Status badge column */
+.eq-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 5px;
+  white-space: nowrap;
+}
+.eq-badge.eq-up    { background: var(--green-100); color: var(--green-700); }
+.eq-badge.eq-down  { background: var(--red-100);   color: var(--red-600); }
+.eq-badge.eq-same  { background: var(--gray-100);  color: var(--gray-500); }
+.eq-badge.eq-gone  { background: var(--gray-200);  color: var(--gray-600); }
+.eq-badge.eq-merge { background: var(--orange-100); color: var(--orange-600); }
+
 /* SKS naik (baru > lama) */
 .eq-table tr.sks-up { background: var(--green-50); }
 .eq-table tr.sks-up td { border-bottom-color: var(--green-100); }
